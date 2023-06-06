@@ -36,6 +36,7 @@ def add_template_repository_to_source_path
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
     p '-----------------'
+    puts "tmpdir: #{tempdir}"
     puts "DirContent: #{Dir["#{tempdir}/helpers/*"]}"
     p '-----------------'
     at_exit { FileUtils.remove_entry(tempdir) }

@@ -35,6 +35,7 @@ def add_template_repository_to_source_path
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
+    puts tempdir
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: [
       '--quiet',
@@ -47,7 +48,6 @@ def add_template_repository_to_source_path
   else
     source_paths.unshift(File.dirname(__FILE__))
   end
-  puts "source_paths: #{source_paths}"
 end
 
 apply_template!

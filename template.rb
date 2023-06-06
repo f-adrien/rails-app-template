@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-Dir["#{__dir__}/helpers/*"].sort.each(&method(:copy_file))
+add_template_repository_to_source_path
 
-require 'helpers/gems_to_load'
+Dir["#{__dir__}/helpers/*"].sort.each(&method(:require))
 
 install_gems
 generate('simple_form:install', '--bootstrap')
@@ -27,4 +27,23 @@ after_bundle do
   git :init
   git add: '.'
   git commit: %( -m 'Initial commit' )
+end
+
+def add_template_repository_to_source_path
+  if __FILE__ =~ %r{\Ahttps?://}
+    require "tmpdir"
+    source_paths.unshift(tempdir = Dir.mktmpdir("rails-template-"))
+    at_exit { FileUtils.remove_entry(tempdir) }
+    git clone: [
+      "--quiet",
+      "https://github.com/f-adrien/rails-app-template.git",
+      tempdir
+    ].map(&:shellescape).join(" ")
+
+    if (branch = __FILE__[%r{rails-template/(.+)/template.rb}, 1])
+      Dir.chdir(tempdir) { git checkout: branch }
+    end
+  else
+    source_paths.unshift(File.dirname(__FILE__))
+  end
 end

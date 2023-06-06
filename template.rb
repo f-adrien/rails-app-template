@@ -3,7 +3,7 @@
 def apply_template!
   add_template_repository_to_source_path
 
-  Dir["#{__dir__}/helpers/*"].sort.each(&method(:require))
+  Dir["#{source_paths.grep(/rails-app-template/).first}/helpers/*"].sort.each(&method(:require))
 
   install_gems
   generate('simple_form:install', '--bootstrap')
@@ -43,7 +43,6 @@ def add_template_repository_to_source_path
   else
     source_paths.unshift(File.dirname(__FILE__))
   end
-  p source_paths.grep(/rails-app-template/).first
 end
 
 apply_template!

@@ -32,7 +32,6 @@ def apply_template!
 end
 
 def add_template_repository_to_source_path
-  puts "source_paths: #{source_paths}"
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))

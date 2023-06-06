@@ -3,7 +3,7 @@
 def apply_template!
   add_template_repository_to_source_path
 
-  Dir["#{__dir__}/helpers/*"].sort.each(&method(:copy_file))
+  Dir["#{__dir__}/helpers/*"].sort.each(&method(:require))
 
   install_gems
   generate('simple_form:install', '--bootstrap')
@@ -35,7 +35,9 @@ def add_template_repository_to_source_path
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
-    puts tempdir
+    p '-----------------'
+    puts "tempdir: #{tempdir}"
+    p '-----------------'
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: [
       '--quiet',

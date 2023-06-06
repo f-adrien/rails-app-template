@@ -3,7 +3,7 @@
 def apply_template!
   add_template_repository_to_source_path
 
-  Dir["#{source_paths.grep(/rails-app-template/).first}/helpers/*"].sort.each(&method(:require))
+  Dir["#{helpers_source_path}/helpers/*"].sort.each(&method(:require))
 
   install_gems
   generate('simple_form:install', '--bootstrap')
@@ -31,17 +31,23 @@ def apply_template!
   end
 end
 
-def add_template_repository_to_source_path
+def helpers_source_path
   if __FILE__ =~ %r{\Ahttps?://}
+    # Add this template directory to source_paths so that Thor actions like
+    # copy_file and template resolve against our source files. If this file was
+    # invoked remotely via HTTP, that means the files are not present locally.
+    # In that case, use `git clone` to download them to a local temporary dir.
     require 'tmpdir'
+    # This
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: ['--quiet', 'https://github.com/f-adrien/rails-app-template.git', tempdir].map(&:shellescape).join(' ')
     if (branch = __FILE__[%r{rails-app-template/(.+)/template.rb}, 1])
       Dir.chdir(tempdir) { git checkout: branch }
     end
+    tempdir
   else
-    source_paths.unshift(File.dirname(__FILE__))
+    __dir__
   end
 end
 

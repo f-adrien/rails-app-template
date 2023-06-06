@@ -2,6 +2,8 @@
 
 Dir["#{__dir__}/helpers/*"].sort.each(&method(:copy_file))
 
+require_relative 'helpers/gems_to_load'
+
 install_gems
 generate('simple_form:install', '--bootstrap')
 

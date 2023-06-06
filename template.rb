@@ -35,16 +35,15 @@ def add_template_repository_to_source_path
   if __FILE__ =~ %r{\Ahttps?://}
     require 'tmpdir'
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
-    p '-----------------'
-    puts "tmpdir: #{tempdir.path}"
-    puts "DirContent: #{Dir["#{tempdir}/helpers/*"]}"
-    p '-----------------'
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: [
       '--quiet',
       'https://github.com/f-adrien/rails-app-template.git',
       tempdir
     ].map(&:shellescape).join(' ')
+    p '-----------------'
+    puts "DirContent: #{Dir["#{tempdir}/helpers/*"]}"
+    p '-----------------'
     if (branch = __FILE__[%r{rails-app-template/(.+)/template.rb}, 1])
       Dir.chdir(tempdir) { git checkout: branch }
     end

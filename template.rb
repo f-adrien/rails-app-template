@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Dir["#{__dir__}/helpers/*"].sort.each(&method(:require))
+Dir["#{__dir__}/helpers/*"].sort.each(&method(:copy_file))
 
 install_gems
 generate('simple_form:install', '--bootstrap')

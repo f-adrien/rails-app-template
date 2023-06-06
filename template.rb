@@ -33,10 +33,10 @@ end
 
 def helpers_source_path
   if __FILE__ =~ %r{\Ahttps?://}
-    # Add this template directory to source_paths so that Thor actions like
-    # copy_file and template resolve against our source files. If this file was
-    # invoked remotely via HTTP, that means the files are not present locally.
+    # If this file was invoked remotely via HTTP, that means the files are not present locally.
     # In that case, use `git clone` to download them to a local temporary dir.
+    # And add this template directory to source_paths so that Thor actions like
+    # copy_file and template resolve against our source files. 
     require 'tmpdir'
     # This
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))

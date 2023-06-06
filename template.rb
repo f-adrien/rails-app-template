@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 def apply_template!
-  add_template_repository_to_source_path
-
   Dir["#{helpers_source_path}/helpers/*"].sort.each(&method(:require))
 
   install_gems

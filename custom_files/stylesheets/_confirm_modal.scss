@@ -1,0 +1,123 @@
+//  CANCEL AND CONFIRM BUTTONS
+
+// ==========================
+// TYPE OF MODAL: CONFIRMATION & CANCELLATION
+
+.custom-swal-confirm-button {
+  margin-right: 12px;
+  border: 2px solid $colorPrimaryDoconnect700;
+  background-color: $colorPrimaryDoconnect700;
+}
+
+.custom-swal-confirm-button:hover {
+  color: $colorPrimaryDoconnect700;
+}
+
+.custom-swal-confirm-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.custom-swal-confirm-button, .custom-swal-cancel-button {
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+  width: 150px;
+  color: white;
+}
+
+.custom-swal-confirm-button:hover, .custom-swal-cancel-button:hover {
+  background-color: white;
+  transition: 0.3s;
+}
+
+.custom-swal-cancel-button {
+  margin-left: 12px;
+  background-color: $colorPrimaryDoconnect600;
+  border: 2px solid $colorPrimaryDoconnect600;
+}
+.custom-swal-cancel-button:hover {
+  color: $colorPrimaryDoconnect600;
+}
+
+
+
+// ==========================
+// TYPE OF MODAL: WARNING
+.custom-swal-warning-button {
+  margin-right: 12px;
+  border: 2px solid $colorWarning600;
+  background-color: $colorWarning600;
+}
+
+.custom-swal-warning-button:hover {
+  color: $colorWarning600;
+}
+
+.custom-swal-warning-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.custom-swal-warning-button {
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+  width: 150px;
+  text-align: center;
+  color: white;
+}
+
+.custom-swal-warning-button:hover {
+  background-color: white;
+  transition: 0.3s;
+}
+
+
+// ==========================
+// TYPE OF MODAL: LIGHT WARNING
+.custom-swal-light-warning-button {
+  margin-right: 12px;
+  border: 2px solid $colorYellow;
+  background-color: $colorYellow;
+}
+
+.custom-swal-light-warning-button:hover {
+  color: $colorYellow;
+}
+
+.custom-swal-light-warning-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.custom-swal-light-warning-button {
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+  width: 150px;
+  color: white;
+}
+
+.custom-swal-light-warning-button:hover{
+  background-color: white;
+  transition: 0.3s;
+}
+
+// TITLE AND TEXT
+
+.custom-swal-title {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  padding: 16px 32px !important;
+  border-bottom: 1px solid $colorGreyLight;
+  background-color: $colorPrimaryDoconnect700;
+  color: white !important;
+  margin-bottom: 10px !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.custom-swal-close-button {
+  color: white !important;
+}

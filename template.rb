@@ -3,25 +3,24 @@
 def apply_template!
   Dir["#{helpers_source_path}/helpers/*"].sort.each(&method(:require))
 
+  create_ebextensions_file
+  create_platform_hooks
+  copy_file 'custom_files/stylesheets/_confirm_modal.scss', 'app/assets/stylesheets/components/_confirm_modal.scss'
+
   install_gems
-  generate('simple_form:install', '--bootstrap')
-
-  install_yarn_packages
-
-  define_routes
-
-  devise_model = 'user'
 
   after_bundle do
-    install_devise(devise_model)
-
-    create_controllers
-    create_js_files
-
-    run 'yarn install'
-
     rails_command('db:create')
-    # rails_command('db:migrate')
+
+    generate('simple_form:install', '--bootstrap')
+    install_devise('user')
+
+    rails_command('db:migrate')
+
+    install_yarn_packages
+
+    create_js_files
+    create_controllers
 
     git :init
     git add: '.'
@@ -36,7 +35,7 @@ def helpers_source_path
     # And add this template directory to source_paths so that Thor actions like
     # copy_file and template resolve against our source files. 
     require 'tmpdir'
-    # This
+
     source_paths.unshift(tempdir = Dir.mktmpdir('rails-app-template-'))
     at_exit { FileUtils.remove_entry(tempdir) }
     git clone: ['--quiet', 'https://github.com/f-adrien/rails-app-template.git', tempdir].map(&:shellescape).join(' ')
@@ -45,6 +44,7 @@ def helpers_source_path
     end
     tempdir
   else
+    source_paths.unshift(File.dirname(__FILE__))
     __dir__
   end
 end

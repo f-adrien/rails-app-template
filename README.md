@@ -5,6 +5,6 @@ rails new \
   -d postgresql \
   --javascript=esbuild \
   --css=bootstrap \
-  --skip-jbuilder \
+  --skip-jbuilder
 
 The --skip-jbuiler flag is optional.

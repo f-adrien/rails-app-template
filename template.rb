@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 def apply_template!
-  Dir["#{helpers_source_path}/helpers/*"].sort.each(&method(:require))
+  add_template_repository_to_source_path
 
-  create_ebextensions_file
-  create_platform_hooks
-  copy_file 'custom_files/stylesheets/_confirm_modal.scss', 'app/assets/stylesheets/components/_confirm_modal.scss'
+  # create_ebextensions_file
+  # create_platform_hooks
+  apply 'generators/assets.rb'
 
   install_gems
 
@@ -28,7 +28,7 @@ def apply_template!
   end
 end
 
-def helpers_source_path
+def add_template_repository_to_source_path
   if __FILE__ =~ %r{\Ahttps?://}
     # If this file was invoked remotely via HTTP, that means the files are not present locally.
     # In that case, use `git clone` to download them to a local temporary dir.

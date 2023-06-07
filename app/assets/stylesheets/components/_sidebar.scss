@@ -1,0 +1,138 @@
+.sidebar {
+  background-color: white;
+  border-right: solid 1px $colorNeutral300;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: 220px;
+  overflow: auto;
+
+  display: flex;
+
+  .admin-nav {
+    margin-top: 49px;
+  }
+
+  .sidebar-dropdown {
+    padding: 0 6px;
+    select {
+      box-shadow: 1px 1px 6px rgba(84, 96, 103, 0.1);
+    }
+  }
+
+  .sidebar__links {
+    color: $colorNeutral900;
+    font-size: 14px;
+    margin-top: 6px;
+    height: calc(100% - 6px);
+    width: 100%;
+
+    a {
+      display: block;
+    }
+  
+    img{
+      height: auto;
+      width: 24px;
+    }
+  }
+
+  .sidebar__links::-webkit-scrollbar-thumb {
+    background-color: #000;
+  }
+
+  
+  .sidebar__link {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+
+    svg {
+      margin-left: 7px;
+      stroke: $colorGrey;
+    }
+
+    p, a {
+      margin-bottom: 0 !important;
+      color: $colorGrey;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+
+    &.active-tab, &:hover {
+      background: $colorPrimaryDoconnect400;
+      text-decoration: none;
+      
+      p, a {
+        color: $colorPrimaryDoconnect700;
+      }
+
+      svg { 
+        stroke: $colorPrimaryDoconnect700;
+      }
+    }
+
+    &.sponsorship-link {
+      p, a {
+        color: #FF7B8C;
+      }
+      
+      &.active-tab, &:hover {
+        background:  rgba(255, 123, 140, 0.14);
+
+        p, a {
+          color: #D4145A;
+        }
+      }
+    }
+
+    &.main_link {
+      padding: 9px 0 9px 6px;
+      svg {
+        height: 19px;
+        width: 19px;
+      }
+  
+      p, a {
+        font-size: 1rem;
+      }
+  
+      &.active-tab, &:hover {
+        padding-left: 0;
+        border-left: solid 6px $colorPrimaryDoconnect700;
+      }
+
+    }
+
+    &.sublink {
+      padding: 9px 0 9px 24px; //different
+      svg {
+        height: 14px; //different
+        width: 14px; //different
+      }
+  
+      p, a {
+        font-size: 0.8rem; //different
+      }
+
+      &.active-tab, &:hover {
+        padding-left: 18px;
+        border-left: solid 6px $colorNeutral400;
+      }
+    }
+  }
+}
+
+.sidebar__wrapper{
+  background-color: $colorPrimaryDoconnect300;
+  min-height: calc(100vh - 56px);
+  padding: 0px 64px 42px 64px;
+  @media (min-width: $breakpoint-md) {
+      margin-left: 220px;
+      width: calc(100vw - 220px);
+      margin-top: 56px;
+  }
+  @media all and (min-width: 812px) and (max-width: 812px) {}
+}

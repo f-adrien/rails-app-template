@@ -1,0 +1,44 @@
+.log_in_or_signup_form {
+  position: relative;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+  .log_in_or_signup_logo_container {
+    position: absolute;
+    top: 4vh;
+    img {
+      width: 50%;
+    }
+  }
+
+  .log_in_title {
+    margin-top: 18vh;
+    font-size: 1.7rem;
+  }
+
+  .log_in_subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $colorGrey;
+    margin-bottom: 8vh;
+  }
+
+  .login-left-container, .login-right-container {
+    min-height: 100vh;
+  }
+
+  .g-recaptcha {
+    iframe {
+      height: 78px;
+    }
+  }
+}
+
+.login-right-container {
+  background: url('https://res.cloudinary.com/doconnect/image/upload/v1605697118/assets/login_background_tkcjx2.jpg') no-repeat;
+  background-size: auto 100%;
+  background-position: right top;
+}

@@ -1,0 +1,44 @@
+.flash-close-button {
+  height: 100%;
+  padding: 0 0 0 20px !important;
+}
+
+.flash {
+  padding: 16px 48px 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 6px 8px rgb(0 0 0 / 20%);
+  border-radius: 4px;
+  margin: 8px;
+  position: fixed;
+  left: 50%;
+  top: 9vh;
+  transform: translate(-50%, -50%);
+  z-index: 1100;
+  margin-top: 10px;
+}
+
+.flash-success {
+  border-left: 16px solid $colorSuccess600;
+  border-bottom: 1px solid $colorSuccess600;
+  border-top: 1px solid $colorSuccess600;
+  border-right: 1px solid $colorSuccess600;
+  background: $colorSuccess200;
+}
+
+.flash-warning {
+  border-left: 16px solid #FCB800;
+  border-bottom: 1px solid #FCB800;
+  border-top: 1px solid #FCB800;
+  border-right: 1px solid #FCB800;
+  background: #fff4d7;
+}
+
+.flash-danger {
+  border-left: 16px solid #e61e3f;
+  border-bottom: 1px solid #e61e3f;
+  border-top: 1px solid #e61e3f;
+  border-right: 1px solid #e61e3f;
+  background: #ffe0e0;
+}

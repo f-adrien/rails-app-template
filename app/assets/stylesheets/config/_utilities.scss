@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+}
+
+.u-hide {
+  opacity: 0;
+  transition: opacity 2000ms;
+}
+
+.u-show {
+  opacity: 1;
+}

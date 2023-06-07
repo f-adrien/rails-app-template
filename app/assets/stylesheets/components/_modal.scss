@@ -1,0 +1,56 @@
+.modal-backdrop {
+  opacity:0.5 !important;
+}
+
+.modal-dialog {
+  transform: none !important;
+  &.large, &.x-large {
+    .modal-body {
+      overflow-y: auto;
+    }
+  }
+  &.large {
+    .modal-content {
+      max-height: fit-content;
+    }
+    max-width: 66%;
+  }
+  &.x-large {
+    .modal-content {
+      max-height: 90vh;
+    }
+    max-width: 90%;
+  }
+  &.fit-content {
+    .modal-content {
+      max-height: fit-content;
+    }
+    // height: fit-content;
+    max-width: fit-content;
+  }
+}
+
+.modal-content {
+  border: 2px solid $colorNeutral300;
+  border-radius: 5px;
+}
+
+.modal-header {
+  display: block;
+}
+
+.modal-header, .modal-footer, .modal-body {
+  padding: 16px 24px;
+  &.video-player {
+    padding: 0;
+  }
+}
+
+.spinner-border {
+  width: 8rem;
+  height: 8rem;
+  border-width: 0.5rem;
+    &.text-doconnect {
+      color: $colorPrimaryDoconnect700
+    }
+}

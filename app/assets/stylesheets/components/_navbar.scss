@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed;
+  border-bottom: solid 1px $colorNeutral300;
+  margin-left: 220px;
+  padding: 0.5rem 64px;
+  top: 0;
+  left: 0;
+  height: 56px;
+  justify-content: space-between;
+  background: white;
+  z-index: 999;
+  min-width: calc(100vw - 220px);
+}
+
+.navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar .navbar-brand img {
+  width: 150px;
+}
+
+.instance-navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $colorGreyLight;
+  .instance-navbar-title {
+    a {
+      font-size: 0.9rem;
+      color: $colorGrey;
+      &.active {
+        color: $colorPrimaryDoconnect700;
+      }
+    }
+  }
+}

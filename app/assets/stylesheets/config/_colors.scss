@@ -1,0 +1,135 @@
+// Define variables for your color scheme
+
+// For example:
+// $red: red;
+// $blue: #167FFB;
+// $yellow: #FFC65A;
+// $orange: #E67E22;
+// $green: #1EDD88;
+// $gray: #0E0000;
+// $light-gray: #F4F4F4;
+
+////////////////////////////////////////
+//             BREAKPOINTS            //
+////////////////////////////////////////
+$breakpoint-xs: 375px;
+$breakpoint-sm: 512px;
+$breakpoint-max-md: 767px;
+$breakpoint-md: 768px;
+$breakpoint-lg2: 1023px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1440px;
+
+////////////////////////////////////////
+//                COLORS              //
+////////////////////////////////////////
+
+/*
+The following is the colors which I have tried to use across all of the design. There may be slight variations, but these will typically be a shift in the HUE, SATURATION or BRIGHTNESS of one of these base colors.
+Try to avoid using HEX values in the code, and instead always reference colors from this file. If there is a color missing, add a variable for it here to maintain a single source of truth for all colors used within the app.
+*/
+// Defining black and white as variables makes it easier when using SASS mixins
+
+$colorWhite:              #fff;
+$colorBlack:              #000;
+
+$colorBlueUltraLight:     #FAFBFC;
+$colorDarkBlue:           #14182A;
+$colorBlue:               #023EFF;
+$colorBluePrint:          #0D3296;
+$colorTurquoise:          #2EE2DA;
+$colorTurquoisePrint:     #13ADC3;
+$colorYellow:             #FAB800;
+$colorGreyMarketing:      #F6F6F7;
+$colorBlueHover:          #3161FF;
+$colorOrange:             #FCB800;
+
+
+////////////////////////////////////////
+//              DoConnect COLORS          //
+////////////////////////////////////////
+
+$colorPrimaryDoconnect700:             #2e5bff;
+$colorPrimaryDoconnect600:             #09c6f4;
+$colorPrimaryDoconnect500:             #8c54ff;
+$colorPrimaryDoconnect400:             #eff2ff;
+$colorPrimaryDoconnect300:             #f4f6fc;
+$colorPrimaryDoconnect200:             #f9faff;
+
+
+////////////////////////////////////////
+//              NEW COLORS            //
+////////////////////////////////////////
+
+/* PRIMARY COLORS */
+$colorPrimary900:         #00001a;
+$colorPrimary800:         #00004d;
+$colorPrimary700:         #000076;
+$colorPrimary600:         #0F0FF7;
+$colorPrimary500:         #1E41EB;
+$colorPrimary400:         #2190FF;
+$colorPrimary300:         #21B5FF;
+$colorPrimary200:         #21DAFF;
+
+/* NEUTRAL COLORS */
+$colorNeutral900:         #1B2459;
+$colorNeutral800:         #37448B;
+$colorNeutral700:         #6673BB;
+$colorNeutral600:         #8490D6;
+$colorNeutral500:         #A1ABE4;
+$colorNeutral400:         #BFC7ED;
+$colorNeutral300:         #DADEF5;
+$colorNeutral200:         #f7f8fd;
+$colorNeutral100:         #EDEFF7;
+
+/* GREYS */
+$colorGreyDarker:         #292933;
+$colorGreyDark:           #565666;
+$colorDimGrey:            #696969;
+$colorGrey:               #9696a3;
+$colorGreyLight:          #c4c4cc;
+$colorGreyLighter:        #e1e1e6;
+$colorGreyLightest:       #f0f0f5;
+$colorGreyLightBuilder:   #f4f6f8;
+$colorGreyLighterBuilder: #f9fafb;
+
+/* red color for inventory */
+$colorRedInventory:        #e61e3f;
+
+// Supporting colors
+/* DANGER COLORS */
+$colorDanger800:          #710e3f;
+$colorDanger700:          #9f1459;
+$colorDanger600:          #cc1972;
+$colorDanger500:          #e6338c;
+$colorDanger400:          #eb60a5;
+$colorDanger300:          #f18ebf;
+$colorDanger200:          #f7bbd9;
+$colorDanger100:          #fce8f2;
+
+/* SUCCESS COLORS */
+$colorSuccess800:         #18681e;
+$colorSuccess700:         #21912a;
+$colorSuccess600:         #2bbb36;
+$colorSuccess500:         #44d450;
+$colorSuccess400:         #6ede77;
+$colorSuccess300:         #97e79e;
+$colorSuccess200:         #c1f1c5;
+$colorSuccess100:         #eafaec;
+
+/* WARNING COLORS */
+$colorWarning800:         #802000;
+$colorWarning700:         #b32d00;
+$colorWarning600:         #e63900;
+$colorWarning500:         #ff531a;
+$colorWarning200:         #ffc6b3;
+$colorWarning100:         #ffece5;
+
+/* INFO COLORS */
+$colorInfo800:            #7a5b05;
+$colorInfo700:            #ab8007;
+$colorInfo200:            #fce9b6;
+
+$border-default: 1px solid $colorPrimary300;
+$box-shadow-default: 1px 1px 10px rgba(84, 96, 103, 0.20);

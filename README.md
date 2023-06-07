@@ -1,7 +1,8 @@
 To use this template run the following command:
 
 rails new \
-  MY_APP_NAME -m https://raw.githubusercontent.com/f-adrien/rails-app-template/main/template.rb \
+  MY_APP_NAME \
+  -m https​&#65279;://raw.githubusercontent.com/f-adrien/rails-app-template/main/template.rb \
   -d postgresql \
   --javascript=esbuild \
   --css=bootstrap \

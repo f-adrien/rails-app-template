@@ -1,6 +1,6 @@
 <div class='container'>
-  <h2 class='mt-4 mb-5 d-flex justify-content-center'>Cameamea</h2>
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'd-flex justify-content-center'}) do |f| %>
+  <h2 class='mt-4 mb-5 d-flex justify-content-center'><%= Rails.application.class.module_parent.name %></h2>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'd-flex justify-content-center' }) do |f| %>
     <div class='col-md-4'>
       <div class="form-inputs">
         <%= f.input :email,

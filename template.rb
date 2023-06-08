@@ -3,25 +3,25 @@
 def apply_template!
   add_template_repository_to_source_path
 
-  # create_ebextensions_file
+  apply 'generators/ebextensions.rb'
+  apply 'generators/platform_hooks.rb'
   # create_platform_hooks
+  apply 'generators/gems_to_load.rb'
+
   apply 'generators/assets.rb'
   apply 'generators/controllers.rb'
-
-  install_gems
 
   after_bundle do
     rails_command('db:create')
 
     generate('simple_form:install', '--bootstrap')
-    install_devise('user')
+    apply 'generators/devise.rb'
 
     rails_command('db:migrate')
 
-    install_yarn_packages
+    apply 'generators/yarn_packages.rb'
 
     create_js_files
-    create_controllers
 
     git :init
     git add: '.'

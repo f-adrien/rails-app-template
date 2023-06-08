@@ -2,16 +2,17 @@
 
 def install_devise!(model_name)
   generate 'devise:install'
-  initializer_path = 'config/initializers/devise.rb'
-  copy_file initializer_path, force: true
-  from_email = ask("Default 'From' address for Devise emails ?", default: 'email@example.com')
-  gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
   generate 'devise', model_name
   override_migration_file(model_name)
   generate('devise:controllers', "#{model_name}s")
   copy_file 'app/controllers/users/sessions_controller.rb', force: true
   copy_file 'app/controllers/users/devise_controller.rb'
+  initializer_path = 'config/initializers/devise.rb'
+  copy_file initializer_path, force: true
+  from_email = ask("Default 'From' address for Devise emails ?", default: 'email@example.com')
+  gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
   generate('devise:views', model_name)
+  copy_file 'app/views/devise/sessions/new.html.erb', force: true
 end
 
 def override_migration_file(model_name)

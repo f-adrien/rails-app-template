@@ -1,40 +1,17 @@
 # frozen_string_literal: true
 
-def install_devise(model_name)
+def install_devise!(model_name)
   generate 'devise:install'
-  custom_config_devise
+  initializer_path = 'config/initializers/devise.rb'
+  copy_file initializer_path, force: true
+  from_email = ask("Default 'From' address for Devise emails ?", default: 'aspen43@hotmail.fr')
+  gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
   generate 'devise', model_name
   override_migration_file(model_name)
   generate('devise:controllers', "#{model_name}s")
-  override_default_controllers(model_name)
-  create_custom_controllers(model_name)
+  copy_file 'app/controllers/users/sessions_controller.rb', force: true
+  copy_file 'app/controllers/users/devise_controller.rb'
   generate('devise:views', model_name)
-end
-
-def custom_config_devise
-  path = 'config/initializers/devise.rb'
-
-  inject_into_file path, after: "# frozen_string_literal: true\n" do
-    <<~RUBY
-
-      class TurboFailureApp < Devise::FailureApp
-        def respond
-          if request_format == :turbo_stream
-            redirect
-          else
-            super
-          end
-        end
-
-        def skip_format?
-          %w[html turbo_stream */*].include? request_format.to_s
-        end
-      end
-    RUBY
-  end
-
-  from_email = ask("Default 'From' address for Devise emails ?", default: 'aspen43@hotmail.fr')
-  gsub_file(path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
 end
 
 def override_migration_file(model_name)
@@ -48,52 +25,4 @@ def override_migration_file(model_name)
   end
 end
 
-def override_default_controllers(model_name)
-  file_path = "app/controllers/#{model_name.downcase}s/sessions_controller.rb"
-  # Step 1: Read the file into a string
-  file_content = File.read(file_path)
-
-  # Step 2: Find and replace the multiline section using regular expressions
-  replacement = <<-REPLACEMENT
-
-  def create
-    super
-    session[:account_id] = current_user.accounts.first.id
-  end
-  REPLACEMENT
-
-  # Use the desired regular expression pattern to find the section
-  pattern = /(\s*# def create\s*\n\s*#\s*super\s*\n\s*# end)/m
-  modified_content = file_content.gsub(pattern, replacement)
-
-  # Step 3: Write the modified content back to the file
-  File.open(file_path, 'w') { |file| file.write(modified_content) }
-end
-
-def create_custom_controllers(model_name)
-  file "app/controllers/#{model_name.downcase}s/devise_controller.rb", <<~RUBY
-    # frozen_string_literal: true
-
-    # Purpose: To create a controller for the prospects
-    class Users::DeviseController < ActionController::Base
-      protect_from_forgery
-      # Purpose of this method is to override the default behavior of Devise
-      class Responder < ActionController::Responder
-        def to_turbo_stream
-          controller.render(options.merge(formats: :html))
-        rescue ActionView::MissingTemplate => e
-          if get?
-            raise e
-          elsif has_errors? && default_action
-            render rendering_options.merge(formats: :html, status: :unprocessable_entity)
-          else
-            redirect_to Rails.application.routes.url_helpers.home_institutions_path
-          end
-        end
-      end
-
-      self.responder = Responder
-      respond_to :html, :turbo_stream
-    end
-  RUBY
-end
+install_devise!('user')

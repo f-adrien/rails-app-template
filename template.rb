@@ -6,6 +6,7 @@ def apply_template!
   # create_ebextensions_file
   # create_platform_hooks
   apply 'generators/assets.rb'
+  apply 'generators/controllers.rb'
 
   install_gems
 

@@ -4,7 +4,7 @@ def install_devise!(model_name)
   generate 'devise:install'
   initializer_path = 'config/initializers/devise.rb'
   copy_file initializer_path, force: true
-  from_email = ask("Default 'From' address for Devise emails ?", default: 'aspen43@hotmail.fr')
+  from_email = ask("Default 'From' address for Devise emails ?", default: 'email@example.com')
   gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
   generate 'devise', model_name
   override_migration_file(model_name)

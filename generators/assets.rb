@@ -8,6 +8,7 @@ copy_file 'app/assets/images/default-avatar.png'
 
 # Components
 
+copy_file 'app/assets/stylesheets/components/_button.scss'
 copy_file 'app/assets/stylesheets/components/_confirm_modal.scss'
 copy_file 'app/assets/stylesheets/components/_flashes.scss'
 copy_file 'app/assets/stylesheets/components/_index.scss'

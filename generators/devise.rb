@@ -24,6 +24,10 @@ def override_migration_file(model_name)
 
     RUBY
   end
+
+  gsub_file migration_file, '# t.integer  :failed_attempts', 't.integer  :failed_attempts'
+  gsub_file migration_file, '# t.string   :unlock_token', 't.string   :unlock_token'
+  gsub_file migration_file, '# t.datetime :locked_at', 't.datetime :locked_at'
 end
 
 install_devise!('user')

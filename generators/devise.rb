@@ -3,7 +3,7 @@
 def install_devise!(model_name)
   generate 'devise:install'
   generate 'devise', model_name
-  override_migration_file(model_name)
+  # override_migration_file(model_name)
   generate('devise:controllers', "#{model_name}s")
   copy_file "app/controllers/#{model_name}s/sessions_controller.rb", force: true
   copy_file "app/controllers/#{model_name}s/devise_controller.rb"

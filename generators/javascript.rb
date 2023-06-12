@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 # ES Build Config
-copy_file 'esbuild.config.js'
+copy_file 'esbuild.config.mjs'
 gsub_file('package.json',
           'esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets',
-          'node esbuild.config.js')
+          'node esbuild.config.mjs')
 
 # JS files
 

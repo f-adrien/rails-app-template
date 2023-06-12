@@ -11,6 +11,7 @@ def apply_template!
   apply 'generators/yarn_packages.rb'
   apply 'generators/config.rb'
   apply 'generators/assets.rb'
+  apply 'generators/javascript.rb'
   apply 'generators/helpers.rb'
   apply 'generators/controllers.rb'
   apply 'generators/models.rb'

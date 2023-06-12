@@ -2,6 +2,7 @@
 
 # ES Build Config
 copy_file 'esbuild.config.js'
+# gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
 
 # JS files
 

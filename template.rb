@@ -8,9 +8,14 @@ def apply_template!
   apply 'generators/ebextensions.rb'
   apply 'generators/platform_hooks.rb'
   apply 'generators/gems_to_load.rb'
-
+  apply 'generators/yarn_packages.rb'
+  apply 'generators/config.rb'
   apply 'generators/assets.rb'
   apply 'generators/helpers.rb'
+  apply 'generators/controllers.rb'
+  apply 'generators/models.rb'
+  apply 'generators/services.rb'
+  apply 'generators/views.rb'
 
   after_bundle do
     rails_command('db:create')
@@ -22,16 +27,7 @@ def apply_template!
     generate('model', 'account', 'name:string', 'active:boolean')
     generate('model', 'account_user', 'account:references', 'user:references', 'permission_level:integer')
 
-    apply 'generators/controllers.rb'
-    apply 'generators/models.rb'
-    apply 'generators/services.rb'
-    apply 'generators/views.rb'
-
     rails_command('db:migrate')
-
-    apply 'generators/yarn_packages.rb'
-
-    create_js_files
 
     git :init
     git add: '.'

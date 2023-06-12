@@ -1,0 +1,20 @@
+<div data-controller='flashes'>
+  <% if notice %>
+    <div class="flash flash-success alert alert-dismissible show m-1 u-show" role="alert" data-flashes-target="alert">
+        <div class='flash-text'>
+          <%= notice %>
+        </div>
+      <button type="button" class="btn-close flash-close-button" data-bs-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="flash flash-danger alert alert-dismissible show m-1 u-show" role="alert" data-flashes-target="alert">
+        <div class='flash-text'>
+          <%= alert %>
+        </div>
+      <button type="button" class="btn-close flash-close-button" data-bs-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+  <% end %>
+</div>

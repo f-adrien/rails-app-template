@@ -30,4 +30,4 @@ copy_file 'app/assets/stylesheets/devise/_devise.scss'
 
 # Application
 
-copy_file 'app/assets/stylesheets/application.scss'
+copy_file 'app/assets/stylesheets/application.scss', force: true

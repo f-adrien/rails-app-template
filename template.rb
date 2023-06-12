@@ -3,19 +3,29 @@
 def apply_template!
   add_template_repository_to_source_path
 
+  copy_file '.gitignore', force: true
+
   apply 'generators/ebextensions.rb'
   apply 'generators/platform_hooks.rb'
-  # create_platform_hooks
   apply 'generators/gems_to_load.rb'
 
   apply 'generators/assets.rb'
-  apply 'generators/controllers.rb'
+  apply 'generators/helpers.rb'
 
   after_bundle do
     rails_command('db:create')
 
     generate('simple_form:install', '--bootstrap')
+
     apply 'generators/devise.rb'
+
+    generate('model', 'account', 'name:string', 'active:boolean')
+    generate('model', 'account_user', 'account:references', 'user:references', 'permission_level:integer')
+
+    apply 'generators/controllers.rb'
+    apply 'generators/models.rb'
+    apply 'generators/services.rb'
+    apply 'generators/views.rb'
 
     rails_command('db:migrate')
 

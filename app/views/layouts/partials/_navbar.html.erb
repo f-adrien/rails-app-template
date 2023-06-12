@@ -1,0 +1,12 @@
+<div class="navbar navbar-expand-sm navbar-light admin-navbar">
+  <div class='d-flex align-items-center'>
+    <img src="https://cutewallpaper.org/24/kamehameha-png/kamehameha-c5e3f-fighterz-58fab-by-17aa8-greensonic04-3209b-on-57d9d-deviantart.gif" alt="" width='80' >
+    <%= link_to root_path, class: "navbar-brand ms-3" do %>
+      CaMeaMea
+    <% end %>
+    <img src="https://cutewallpaper.org/24/kamehameha-png/kamehameha-c5e3f-fighterz-58fab-by-17aa8-greensonic04-3209b-on-57d9d-deviantart.gif" alt="" width='80' style="-webkit-transform: scaleX(-1);transform: scaleX(-1);">
+  </div>
+  <%= link_to destroy_user_session_path, method: :delete do %>
+    Se déconnecter
+  <% end %>
+</div>

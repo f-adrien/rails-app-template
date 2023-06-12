@@ -1,0 +1,7 @@
+aws:
+  receive_message:
+    attribute_names:
+    - ApproximateReceiveCount
+    - SentTimestamp
+  region: eu-west-3
+concurrency: 15

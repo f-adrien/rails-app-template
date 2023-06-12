@@ -12,6 +12,7 @@ def install_devise!(model_name)
   from_email = ask("Default 'From' address for Devise emails ?", default: 'email@example.com')
   gsub_file(initializer_path, 'please-change-me-at-config-initializers-devise@example.com', from_email)
   generate('devise:views', model_name)
+  copy_file 'app/views/layouts/devise.html.erb'
   copy_file 'app/views/devise/sessions/new.html.erb', force: true
 end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def disable_turbo_preview
     content_for(:metas) do

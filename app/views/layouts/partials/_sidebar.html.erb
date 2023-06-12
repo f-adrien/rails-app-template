@@ -1,0 +1,39 @@
+<div class="sidebar">
+  <nav class='w-100'>
+    <div class="sidebar__links d-flex justify-content-between flex-column">
+      <div>
+        <div class='sidebar-dropdown'>
+          <%= simple_form_for :accounts, url: change_account_path do |f| %>
+            <%= f.input :account_id,
+                          collection: current_user.accounts.where(active: true).sort_by(&:name),
+                          include_blank: false,
+                          label_method: lambda { |account| account.name },
+                          value_method: lambda { |account| account.id },
+                          label: false,
+                          selected: @account.id,
+                          input_html: { onchange: 'this.form.submit();' },
+                          wrapper_html: { style: 'margin-bottom: 11px;' }  %>
+          <% end %>
+        </div>
+        <%= link_to root_path, class: '' do %>
+          <div class="sidebar__link main_link align-items-center">
+            <%#= svg 'icon-dashboard' %>
+            <p class="ms-2">Vidéos enregistrées</p>
+          </div>
+        <% end %>
+        <%= link_to prospect_lists_path, class: '' do %>
+          <div class="sidebar__link main_link align-items-center">
+            <%#= svg 'icon-dashboard' %>
+            <p class="ms-2">Listes de prospects</p>
+          </div>
+        <% end %>
+        <%= link_to prospect_messages_path, class: '' do %>
+          <div class="sidebar__link main_link align-items-center">
+            <%#= svg 'icon-dashboard' %>
+            <p class="ms-2">Messagerie</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</div>

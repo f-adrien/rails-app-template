@@ -11,14 +11,15 @@ def apply_template!
   apply 'generators/yarn_packages.rb'
   apply 'generators/config.rb'
   apply 'generators/assets.rb'
-  apply 'generators/javascript.rb'
   apply 'generators/helpers.rb'
   apply 'generators/controllers.rb'
-  apply 'generators/models.rb'
   apply 'generators/services.rb'
   apply 'generators/views.rb'
 
   after_bundle do
+    # Apply this file after the bundle install to avoid creating the controllers/index.js file before Stimulus is installed
+    apply 'generators/javascript.rb'
+
     rails_command('db:create')
 
     generate('simple_form:install', '--bootstrap')
@@ -27,6 +28,9 @@ def apply_template!
 
     generate('model', 'account', 'name:string', 'active:boolean')
     generate('model', 'account_user', 'account:references', 'user:references', 'permission_level:integer')
+
+    # Models are created after the devise install to avoid creating the user model before the devise install
+    apply 'generators/models.rb'
 
     rails_command('db:migrate')
 

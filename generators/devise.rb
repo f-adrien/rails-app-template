@@ -5,8 +5,8 @@ def install_devise!(model_name)
   generate 'devise', model_name
   override_migration_file(model_name)
   generate('devise:controllers', "#{model_name}s")
-  copy_file 'app/controllers/users/sessions_controller.rb', force: true
-  copy_file 'app/controllers/users/devise_controller.rb'
+  copy_file "app/controllers/#{model_name}s/sessions_controller.rb", force: true
+  copy_file "app/controllers/#{model_name}s/devise_controller.rb"
   initializer_path = 'config/initializers/devise.rb'
   copy_file initializer_path, force: true
   from_email = ask("Default 'From' address for Devise emails ?", default: 'email@example.com')
@@ -17,7 +17,9 @@ def install_devise!(model_name)
 end
 
 def override_migration_file(model_name)
+  puts model_name
   migration_file = Dir.glob("db/migrate/*_devise_create_#{model_name.downcase}s.rb").first
+  puts "Overriding #{migration_file}"
   inject_into_file migration_file, after: "create_table :users do |t|\n" do
     <<-'RUBY'
       t.string :first_name

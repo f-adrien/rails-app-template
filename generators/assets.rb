@@ -30,4 +30,5 @@ copy_file 'app/assets/stylesheets/devise/_devise.scss'
 
 # Application
 
+copy_file 'app/assets/stylesheets/applicatiin.bootstrap.scss', force: true
 copy_file 'app/assets/stylesheets/application.scss', force: true

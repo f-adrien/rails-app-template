@@ -5,6 +5,9 @@ copy_file 'esbuild.config.js'
 gsub_file('package.json',
           'esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets',
           'node esbuild.config.js')
+gsub_file('package.json',
+          'sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules',
+          'sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules')
 
 # JS files
 

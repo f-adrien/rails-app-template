@@ -32,8 +32,13 @@ def apply_template!
     # Models are created after the devise install to avoid creating the user model before the devise install
     apply 'generators/models.rb'
 
+    copy_file 'Procfile.dev', force: true
+    copy_file 'db/seeds.rb', force: true
+
+    rails_command('db:drop')
     rails_command('db:create')
     rails_command('db:migrate')
+    rails_command('db:seed')
 
     git :init
     git add: '.'

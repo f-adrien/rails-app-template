@@ -7,8 +7,7 @@ def apply_template!
 
   apply 'generators/ebextensions.rb'
   apply 'generators/platform_hooks.rb'
-  apply 'generators/gems_to_load.rb'
-  apply 'generators/yarn_packages.rb'
+  apply 'generators/gemfile.rb'
   apply 'generators/config.rb'
   apply 'generators/helpers.rb'
   apply 'generators/controllers.rb'
@@ -16,6 +15,8 @@ def apply_template!
   apply 'generators/views.rb'
 
   after_bundle do
+    apply 'generators/yarn_packages.rb'
+
     # Apply this file after the bundle install to ensure application.bootstrap.scss is created in order to override it
     apply 'generators/assets.rb'
 

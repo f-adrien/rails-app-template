@@ -3,6 +3,7 @@
 run 'yarn add @hotwired/stimulus'
 run 'yarn add @hotwired/turbo-rails'
 run 'yarn add @rails/ujs'
+run 'yarn add esbuild@^0.16.5'
 run 'yarn add esbuild-rails@^1.0.4'
 run 'yarn add glob'
 run 'yarn add sass'
